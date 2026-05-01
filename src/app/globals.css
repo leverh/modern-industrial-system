@@ -1,26 +1,190 @@
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;900&family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400&display=swap');
 @import "tailwindcss";
 
+@theme {
+  --color-bg:             #0A0A0A;
+  --color-surface:        #111111;
+  --color-surface-2:      #1A1A1A;
+  --color-surface-3:      #222222;
+  --color-border:         #2A2A2A;
+  --color-border-subtle:  #1E1E1E;
+  --color-fg:             #F0F0F0;
+  --color-fg-muted:       #888888;
+  --color-fg-subtle:      #444444;
+  --color-accent:         #FF4D00;
+  --color-success:        #22C55E;
+  --color-warning:        #F59E0B;
+  --color-error:          #EF4444;
+  --color-info:           #3B82F6;
+  --font-sans: 'Geist', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-bg:             #0A0A0A;
+  --color-surface:        #111111;
+  --color-surface-2:      #1A1A1A;
+  --color-surface-3:      #222222;
+  --color-border:         #2A2A2A;
+  --color-border-subtle:  #1E1E1E;
+  --color-fg:             #F0F0F0;
+  --color-fg-muted:       #888888;
+  --color-fg-subtle:      #444444;
+  --color-accent:         #FF4D00;
+  --color-accent-dim:     rgba(255, 77, 0, 0.12);
+  --color-accent-glow:    rgba(255, 77, 0, 0.25);
+  --color-success:        #22C55E;
+  --color-warning:        #F59E0B;
+  --color-error:          #EF4444;
+  --color-info:           #3B82F6;
+  --font-sans:  'Geist', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono:  'JetBrains Mono', 'Fira Code', monospace;
+  --text-xs:   11px;
+  --text-sm:   13px;
+  --text-base: 15px;
+  --text-lg:   17px;
+  --text-xl:   20px;
+  --text-2xl:  24px;
+  --text-3xl:  32px;
+  --text-4xl:  48px;
+  --leading-tight:  1.15;
+  --leading-normal: 1.5;
+  --space-1:   4px;
+  --space-2:   8px;
+  --space-3:   12px;
+  --space-4:   16px;
+  --space-5:   20px;
+  --space-6:   24px;
+  --space-8:   32px;
+  --space-10:  40px;
+  --space-12:  48px;
+  --space-16:  64px;
+  --radius-none: 0px;
+  --radius-sm:   2px;
+  --radius-md:   4px;
+  --shadow-sm:  0 1px 3px rgba(0,0,0,0.4);
+  --shadow-md:  0 4px 16px rgba(0,0,0,0.6);
+  --shadow-lg:  0 8px 32px rgba(0,0,0,0.8);
+  --shadow-focus: 0 0 0 2px var(--color-bg), 0 0 0 4px var(--color-accent);
+  --duration-fast:   80ms;
+  --duration-normal: 150ms;
+  --duration-slow:   300ms;
+  --ease-out:   cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in:    cubic-bezier(0.55, 0, 1, 0.45);
+  --ease-inout: cubic-bezier(0.45, 0, 0.55, 1);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+*, *::before, *::after { box-sizing: border-box; }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  background-color: var(--color-bg);
+  color: var(--color-fg);
+  min-height: 100vh;
+}
+
+::selection { background: var(--color-accent); color: #fff; }
+
+:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus);
+}
+
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: var(--color-bg); }
+::-webkit-scrollbar-thumb { background: var(--color-border); }
+::-webkit-scrollbar-thumb:hover { background: var(--color-accent); }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes scaleIn {
+  from { transform: scale(0.96); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+@keyframes shimmer {
+  0%   { background-position: -600px 0; }
+  100% { background-position: 600px 0; }
+}
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+@keyframes progressFill {
+  from { width: 0%; }
+  to   { width: var(--progress-value, 0%); }
+}
+@keyframes toastSlideUp {
+  from { transform: translateY(100%) scale(0.96); opacity: 0; }
+  to   { transform: translateY(0) scale(1); opacity: 1; }
+}
+@keyframes toastFadeOut {
+  from { transform: translateY(0) scale(1); opacity: 1; max-height: 80px; margin-bottom: 8px; }
+  to   { transform: translateY(8px) scale(0.96); opacity: 0; max-height: 0; margin-bottom: 0; }
+}
+@keyframes checkmark {
+  from { transform: rotate(45deg) scaleY(0); }
+  to   { transform: rotate(45deg) scaleY(1); }
+}
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.5; transform: scale(0.8); }
+}
+@keyframes indeterminate {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(350%); }
+}
+@keyframes stripeScroll {
+  from { background-position: 0 0; }
+  to   { background-position: 16px 0; }
+}
+
+/* THEME CONTRACT — 5 semantic tokens
+   All themeable components use ONLY these vars */
+
+:root {
+  --accent:         #FF4D00;
+  --on-accent:      #FFFFFF;
+  --bg-surface:     #111111;
+  --border-subtle:  #2A2A2A;
+  --radius:         0px;
+  --accent-dim:     rgba(255, 77, 0, 0.12);
+  --accent-glow:    rgba(255, 77, 0, 0.25);
+  --accent-hover:   #E64400;
+}
+
+/*  PUNK THEME  */
+[data-theme="punk"] {
+  --accent:         #FF00FF;
+  --on-accent:      #000000;
+  --bg-surface:     #050505;
+  --border-subtle:  #330033;
+  --radius:         0px;
+  --accent-dim:     rgba(255, 0, 255, 0.12);
+  --accent-glow:    rgba(255, 0, 255, 0.3);
+  --accent-hover:   #CC00CC;
+
+  --color-accent:        #FF00FF;
+  --color-accent-dim:    rgba(255, 0, 255, 0.12);
+  --color-accent-glow:   rgba(255, 0, 255, 0.3);
+  --color-bg:            #050505;
+  --color-surface:       #0A0A0A;
+  --color-surface-2:     #111111;
+  --color-surface-3:     #1A001A;
+  --color-border:        #2D002D;
+  --color-border-subtle: #1A001A;
+  --shadow-focus:        0 0 0 2px var(--color-bg), 0 0 0 4px #FF00FF;
+}
+
+[data-theme="punk"] body {
+  background-color: #050505;
 }

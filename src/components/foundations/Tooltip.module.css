@@ -3,32 +3,59 @@
   cursor: default;
 }
 
-.content {
+.wrapper {
   position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.content {
+  position: absolute;
+  left: 50%;
   font-family: var(--font-mono);
   font-size: var(--text-xs);
   font-weight: 400;
   letter-spacing: 0.04em;
-  line-height: 1.4;
+  line-height: 1;
   color: var(--color-fg);
   background: var(--color-surface-3);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-sm);
-  padding: var(--space-1) var(--space-3);
+  /* Extra top padding prevents capitals clipping under the border */
+  padding: var(--space-2) var(--space-3) var(--space-1);
   max-width: 240px;
   white-space: nowrap;
   pointer-events: none;
   z-index: 100;
   box-shadow: var(--shadow-md);
-  animation: tooltipIn var(--duration-normal) var(--ease-out);
 }
 
-@keyframes tooltipIn {
-  from { opacity: 0; transform: scale(0.96) translateY(2px); }
-  to   { opacity: 1; transform: scale(1) translateY(0); }
+/*  Placement  */
+
+.content.top {
+  bottom: calc(100% + 8px);
+  transform: translateX(-50%);
+  animation: tooltipInTop var(--duration-normal) var(--ease-out) forwards;
 }
 
-/* Arrow */
+.content.bottom {
+  top: calc(100% + 8px);
+  transform: translateX(-50%);
+  animation: tooltipInBottom var(--duration-normal) var(--ease-out) forwards;
+}
+
+@keyframes tooltipInTop {
+  from { opacity: 0; transform: translateX(-50%) translateY(4px); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+@keyframes tooltipInBottom {
+  from { opacity: 0; transform: translateX(-50%) translateY(-4px); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+/*  Arrow  */
 .content::before {
   content: '';
   position: absolute;
@@ -39,24 +66,16 @@
   border-top: 1px solid var(--color-border);
 }
 
-/* Top placement */
-.top .content::before {
+/* Top: arrow points downward */
+.content.top::before {
   bottom: -4px;
   left: 50%;
   transform: translateX(-50%) rotate(225deg);
 }
 
-/* Bottom placement */
-.bottom .content::before {
+/* Bottom: arrow points upward */
+.content.bottom::before {
   top: -4px;
   left: 50%;
   transform: translateX(-50%) rotate(45deg);
-}
-
-.wrapper {
-  position: relative;
-  display: inline-flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--space-1);
 }

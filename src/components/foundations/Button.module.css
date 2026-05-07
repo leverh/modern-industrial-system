@@ -144,7 +144,7 @@
 .spinnerRing {
   width: 14px;
   height: 14px;
-  border: 1.5px solid currentColor;
+  border: 1.5px solid #f0f0f0;
   border-top-color: transparent;
   border-radius: 50%;
   animation: buttonSpin 0.7s linear infinite;

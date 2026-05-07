@@ -17,6 +17,13 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   href?: string
 }
 
+const spinnerColor: Record<ButtonVariant, string> = {
+  primary: 'var(--on-accent)',
+  secondary: 'var(--color-fg-muted)',
+  ghost: 'var(--color-fg-muted)',
+  destructive: 'var(--color-error)',
+}
+
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
@@ -63,7 +70,10 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 
         {loading && (
           <span className={styles.spinner} aria-hidden="true">
-            <span className={styles.spinnerRing} />
+            <span
+              className={styles.spinnerRing}
+              style={{ color: spinnerColor[variant] }}
+            />
           </span>
         )}
       </button>

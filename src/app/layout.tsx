@@ -3,25 +3,30 @@ import './globals.css'
 import { ToastProvider } from '@/components'
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://modern-industrial-system.madebyever.com'),
-  title: 'Modern Industrial — Component Library',
-  description: 'High-Velocity Minimalist System for performance-critical applications',
+  metadataBase: new URL('https://modern-industrial-storybook.madebyever.com'),
+  title: 'Modern Industrial — Storybook',
+  description: 'Component documentation and isolated testing for the Modern Industrial System',
   alternates: {
-    canonical: 'https://madebyever.com/projects/system',
+    canonical: '/',
   },
+  robots: {
+    index: false,
+    follow: true,
+  },
+
   icons: {
     icon: '/favicon.ico',
     shortcut: '/favicon-16x16.png',
     apple: '/apple-touch-icon.png',
   },
   openGraph: {
-    title: 'Modern Industrial — Component Library',
-    description: 'High-Velocity Minimalist System for performance-critical applications',
-    url: 'https://modern-industrial-system.madebyever.com',
+    title: 'Modern Industrial — Storybook',
+    description: 'Component documentation and isolated testing for the Modern Industrial System',
+    url: 'https://modern-industrial-storybook.madebyever.com',
     siteName: 'Made by Ever',
     images: [
       {
-        url: '/og-image.png', 
+        url: '/og-storybook.png', 
         width: 1200,
         height: 630,
         alt: 'Modern Industrial System Preview',
@@ -35,7 +40,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Modern Industrial — Component Library',
     description: 'High-Velocity Minimalist System for performance-critical applications',
-    images: ['/og-image.png'],
+    images: ['/og-storybook.png'],
   },
 };
 

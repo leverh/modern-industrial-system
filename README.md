@@ -1,36 +1,28 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Component Library
 
-## Getting Started
+> A fast, considered web experience built with precision. 
 
-First, run the development server:
+![Project Preview](public/og-image.png)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### [Live Production Preview](https://modern-industrial-system.madebyever.com/)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### [Live Storybook Link](https://modern-industrial-storybook.madebyever.com/)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## Core Focus
 
-To learn more about Next.js, take a look at the following resources:
+Modern Industrial System is a production-grade React component library built around a thesis: a design system should have a strong opinion, not just a colour palette. Every component — from Button to Command Palette — is engineered to look like it came from one place, behave predictably under all input conditions, and remain accessible without exception.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## The Tech Stack
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+* **Framework:** Next.js (App Router)
+* **Styling:** CSS Modules + Tailwind v4
+* **Language:** TypeScript
 
-## Deploy on Vercel
+## Key Features
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+* **5-Token Theme Contract:** Every themeable component references exactly five semantic variables. Switching themes means redefining those five values under a *data-theme* selector. The entire UI repaints in one attribute change.
+* **Radix UI (selective):** Used only where the accessibility contract is genuinely complex: Dialog, Accordion, Tooltip.
+* **4px Grid + Focus Contract:** Every spacing value is a multiple of 4px, defined as a CSS custom property. Every interactive element ships with a distinct focus-visible state.
